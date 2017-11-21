@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MYSQL">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="YunStore">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="artdb"/>
+    <schema id="4" parent="1" name="bookManage"/>
+    <schema id="5" parent="1" name="db_book"/>
+    <schema id="6" parent="1" name="hygiene"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="library"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="recruit"/>
+    <schema id="12" parent="1" name="s"/>
+    <schema id="13" parent="1" name="sdjt"/>
+    <schema id="14" parent="1" name="sdjtu"/>
+    <schema id="15" parent="1" name="software"/>
+    <schema id="16" parent="1" name="softwaretest"/>
+    <schema id="17" parent="1" name="sys"/>
+    <schema id="18" parent="1" name="taotao1"/>
+    <schema id="19" parent="1" name="tiku_db"/>
+    <schema id="20" parent="1" name="yinmingzheng"/>
+    <schema id="21" parent="1" name="YUN"/>
+    <schema id="22" parent="1" name="yuntest"/>
+    <schema id="23" parent="1" name="YUNTEST"/>
+    <table id="24" parent="2" name="b_file_directory"/>
+    <table id="25" parent="2" name="b_file_info"/>
+    <table id="26" parent="2" name="d_file_type"/>
+    <table id="27" parent="2" name="r_teacher_file"/>
+    <table id="28" parent="2" name="r_teacher_role"/>
+    <table id="29" parent="2" name="s_dictionary"/>
+    <table id="30" parent="2" name="s_dictionary_type"/>
+    <table id="31" parent="2" name="s_link_menu"/>
+    <table id="32" parent="2" name="s_login_log"/>
+    <table id="33" parent="2" name="s_operation_log"/>
+    <table id="34" parent="2" name="s_role"/>
+    <table id="35" parent="2" name="s_teacher_info"/>
+    <column id="36" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>char(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="24" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="38" parent="24" name="parent">
+      <Position>3</Position>
+      <DataType>char(36)|0</DataType>
+    </column>
+    <column id="39" parent="24" name="path">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="40" parent="24" name="time">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="41" parent="24" name="user">
+      <Position>6</Position>
+      <DataType>char(36)|0</DataType>
+    </column>
+    <index id="42" parent="24" name="parent">
+      <ColNames>parent</ColNames>
+    </index>
+    <index id="43" parent="24" name="user">
+      <ColNames>user</ColNames>
+    </index>
+    <key id="44" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>char(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="25" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="47" parent="25" name="url">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="48" parent="25" name="time">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="49" parent="25" name="directory">
+      <Position>5</Position>
+      <DataType>char(36)|0</DataType>
+    </column>
+    <column id="50" parent="25" name="type">
+      <Position>6</Position>
+      <DataType>char(36)|0</DataType>
+    </column>
+    <index id="51" parent="25" name="directory">
+      <ColNames>directory</ColNames>
+    </index>
+    <index id="52" parent="25" name="type">
+      <ColNames>type</ColNames>
+    </index>
+    <key id="53" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>char(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="26" name="type">
+      <Position>2</Position>
+      <DataType>char(10)|0</DataType>
+    </column>
+    <column id="56" parent="26" name="name">
+      <Position>3</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <key id="57" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="59" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="60" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="61" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="63" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="64" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="65" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="66" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="67" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="68" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="69" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="70" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="71" parent="33" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="72" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="73" parent="34" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="74" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>char(36)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="35" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="76" parent="35" name="username">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="35" name="password">
+      <Position>4</Position>
+      <DataType>char(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="78" parent="35" name="s_teacher_info_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="79" parent="35" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="80" parent="35" name="s_teacher_info_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>s_teacher_info_username_uindex</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
