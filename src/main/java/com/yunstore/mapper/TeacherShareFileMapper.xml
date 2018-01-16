@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunstore.mapper.TeacherShareFileMapper" >
+  <resultMap id="BaseResultMap" type="com.yunstore.entity.TeacherShareFile" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="file" property="file" jdbcType="CHAR" />
+    <result column="friend" property="friend" jdbcType="CHAR" />
+    <result column="user" property="user" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, file, friend, user
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yunstore.entity.TeacherShareFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from r_teacher_share_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from r_teacher_share_file
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from r_teacher_share_file
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunstore.entity.TeacherShareFileExample" >
+    delete from r_teacher_share_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunstore.entity.TeacherShareFile" >
+    insert into r_teacher_share_file (id, file, friend, user
+      )
+    values (uuid(), #{file,jdbcType=CHAR}, #{friend,jdbcType=CHAR}, #{user,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunstore.entity.TeacherShareFile" >
+    insert into r_teacher_share_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="file != null" >
+        file,
+      </if>
+      <if test="friend != null" >
+        friend,
+      </if>
+      <if test="user != null" >
+        user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="file != null" >
+        #{file,jdbcType=CHAR},
+      </if>
+      <if test="friend != null" >
+        #{friend,jdbcType=CHAR},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunstore.entity.TeacherShareFileExample" resultType="java.lang.Integer" >
+    select count(*) from r_teacher_share_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update r_teacher_share_file
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.file != null" >
+        file = #{record.file,jdbcType=CHAR},
+      </if>
+      <if test="record.friend != null" >
+        friend = #{record.friend,jdbcType=CHAR},
+      </if>
+      <if test="record.user != null" >
+        user = #{record.user,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update r_teacher_share_file
+    set id = #{record.id,jdbcType=CHAR},
+      file = #{record.file,jdbcType=CHAR},
+      friend = #{record.friend,jdbcType=CHAR},
+      user = #{record.user,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunstore.entity.TeacherShareFile" >
+    update r_teacher_share_file
+    <set >
+      <if test="file != null" >
+        file = #{file,jdbcType=CHAR},
+      </if>
+      <if test="friend != null" >
+        friend = #{friend,jdbcType=CHAR},
+      </if>
+      <if test="user != null" >
+        user = #{user,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunstore.entity.TeacherShareFile" >
+    update r_teacher_share_file
+    set file = #{file,jdbcType=CHAR},
+      friend = #{friend,jdbcType=CHAR},
+      user = #{user,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

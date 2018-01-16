@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunstore.mapper.GroupMaterialFileMapper" >
+  <resultMap id="BaseResultMap" type="com.yunstore.entity.GroupMaterialFile" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="`group`" property="group" jdbcType="CHAR" />
+    <result column="file" property="file" jdbcType="CHAR" />
+    <result column="time" property="time" jdbcType="CHAR" />
+    <result column="user" property="user" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, `group`, file, time, user
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yunstore.entity.GroupMaterialFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from r_group_material_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from r_group_material_file
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from r_group_material_file
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunstore.entity.GroupMaterialFileExample" >
+    delete from r_group_material_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunstore.entity.GroupMaterialFile" >
+    insert into r_group_material_file (id, `group`, file, time,
+      user)
+    values (uuid(), #{group,jdbcType=CHAR}, #{file,jdbcType=CHAR}, #{time,jdbcType=CHAR},
+      #{user,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunstore.entity.GroupMaterialFile" >
+    insert into r_group_material_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="group != null" >
+        group,
+      </if>
+      <if test="file != null" >
+        file,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="user != null" >
+        user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="group != null" >
+        #{group,jdbcType=CHAR},
+      </if>
+      <if test="file != null" >
+        #{file,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=CHAR},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunstore.entity.GroupMaterialFileExample" resultType="java.lang.Integer" >
+    select count(*) from r_group_material_file
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update r_group_material_file
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.group != null" >
+        group = #{record.group,jdbcType=CHAR},
+      </if>
+      <if test="record.file != null" >
+        file = #{record.file,jdbcType=CHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=CHAR},
+      </if>
+      <if test="record.user != null" >
+        user = #{record.user,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update r_group_material_file
+    set id = #{record.id,jdbcType=CHAR},
+      `group` = #{record.group,jdbcType=CHAR},
+      file = #{record.file,jdbcType=CHAR},
+      time = #{record.time,jdbcType=CHAR},
+      user = #{record.user,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunstore.entity.GroupMaterialFile" >
+    update r_group_material_file
+    <set >
+      <if test="group != null" >
+        group = #{group,jdbcType=CHAR},
+      </if>
+      <if test="file != null" >
+        file = #{file,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=CHAR},
+      </if>
+      <if test="user != null" >
+        user = #{user,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunstore.entity.GroupMaterialFile" >
+    update r_group_material_file
+    set `group` = #{group,jdbcType=CHAR},
+      file = #{file,jdbcType=CHAR},
+      time = #{time,jdbcType=CHAR},
+      user = #{user,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

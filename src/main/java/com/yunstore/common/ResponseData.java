@@ -1,5 +1,12 @@
 package com.yunstore.common;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
+import java.io.IOException;
+
 public class ResponseData {
 
     // 响应业务状态
@@ -18,7 +25,7 @@ public class ResponseData {
     public ResponseData() {
 
     }
-
+    
     public ResponseData(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;

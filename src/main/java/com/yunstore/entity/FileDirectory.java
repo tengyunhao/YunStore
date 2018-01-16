@@ -7,9 +7,11 @@ public class FileDirectory {
 
     private String parent;
 
-    private String path;
+    private Integer depth;
 
     private String time;
+
+    private String user;
 
     public String getId() {
         return id;
@@ -35,12 +37,12 @@ public class FileDirectory {
         this.parent = parent == null ? null : parent.trim();
     }
 
-    public String getPath() {
-        return path;
+    public Integer getDepth() {
+        return depth;
     }
 
-    public void setPath(String path) {
-        this.path = path == null ? null : path.trim();
+    public void setDepth(Integer depth) {
+        this.depth = depth;
     }
 
     public String getTime() {
@@ -49,5 +51,13 @@ public class FileDirectory {
 
     public void setTime(String time) {
         this.time = time == null ? null : time.trim();
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user == null ? null : user.trim();
     }
 }

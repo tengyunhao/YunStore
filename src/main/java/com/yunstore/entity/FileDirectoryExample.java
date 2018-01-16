@@ -314,73 +314,63 @@ public class FileDirectoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andPathIsNull() {
-            addCriterion("path is null");
+        public Criteria andDepthIsNull() {
+            addCriterion("depth is null");
             return (Criteria) this;
         }
 
-        public Criteria andPathIsNotNull() {
-            addCriterion("path is not null");
+        public Criteria andDepthIsNotNull() {
+            addCriterion("depth is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPathEqualTo(String value) {
-            addCriterion("path =", value, "path");
+        public Criteria andDepthEqualTo(Integer value) {
+            addCriterion("depth =", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotEqualTo(String value) {
-            addCriterion("path <>", value, "path");
+        public Criteria andDepthNotEqualTo(Integer value) {
+            addCriterion("depth <>", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathGreaterThan(String value) {
-            addCriterion("path >", value, "path");
+        public Criteria andDepthGreaterThan(Integer value) {
+            addCriterion("depth >", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathGreaterThanOrEqualTo(String value) {
-            addCriterion("path >=", value, "path");
+        public Criteria andDepthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("depth >=", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathLessThan(String value) {
-            addCriterion("path <", value, "path");
+        public Criteria andDepthLessThan(Integer value) {
+            addCriterion("depth <", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathLessThanOrEqualTo(String value) {
-            addCriterion("path <=", value, "path");
+        public Criteria andDepthLessThanOrEqualTo(Integer value) {
+            addCriterion("depth <=", value, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathLike(String value) {
-            addCriterion("path like", value, "path");
+        public Criteria andDepthIn(List<Integer> values) {
+            addCriterion("depth in", values, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotLike(String value) {
-            addCriterion("path not like", value, "path");
+        public Criteria andDepthNotIn(List<Integer> values) {
+            addCriterion("depth not in", values, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathIn(List<String> values) {
-            addCriterion("path in", values, "path");
+        public Criteria andDepthBetween(Integer value1, Integer value2) {
+            addCriterion("depth between", value1, value2, "depth");
             return (Criteria) this;
         }
 
-        public Criteria andPathNotIn(List<String> values) {
-            addCriterion("path not in", values, "path");
-            return (Criteria) this;
-        }
-
-        public Criteria andPathBetween(String value1, String value2) {
-            addCriterion("path between", value1, value2, "path");
-            return (Criteria) this;
-        }
-
-        public Criteria andPathNotBetween(String value1, String value2) {
-            addCriterion("path not between", value1, value2, "path");
+        public Criteria andDepthNotBetween(Integer value1, Integer value2) {
+            addCriterion("depth not between", value1, value2, "depth");
             return (Criteria) this;
         }
 
@@ -451,6 +441,76 @@ public class FileDirectoryExample {
 
         public Criteria andTimeNotBetween(String value1, String value2) {
             addCriterion("time not between", value1, value2, "time");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIsNull() {
+            addCriterion("user is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIsNotNull() {
+            addCriterion("user is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserEqualTo(String value) {
+            addCriterion("user =", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotEqualTo(String value) {
+            addCriterion("user <>", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThan(String value) {
+            addCriterion("user >", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThanOrEqualTo(String value) {
+            addCriterion("user >=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThan(String value) {
+            addCriterion("user <", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThanOrEqualTo(String value) {
+            addCriterion("user <=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLike(String value) {
+            addCriterion("user like", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotLike(String value) {
+            addCriterion("user not like", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIn(List<String> values) {
+            addCriterion("user in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotIn(List<String> values) {
+            addCriterion("user not in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserBetween(String value1, String value2) {
+            addCriterion("user between", value1, value2, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotBetween(String value1, String value2) {
+            addCriterion("user not between", value1, value2, "user");
             return (Criteria) this;
         }
     }

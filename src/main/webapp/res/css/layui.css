@@ -1,4 +1,5 @@
 /** layui-v2.1.5 MIT License By http://www.layui.com */
+/* 修改了2584行的.layui-nav的背景颜色*/
 .layui-btn, .layui-inline, img {
     vertical-align: middle
 }
@@ -1041,7 +1042,7 @@ a cite {
 }
 
 .layui-bg-blue {
-    background-color: #1E9FFF !important
+    background-color: #3c7f96 !important
 }
 
 .layui-bg-black {
@@ -2584,7 +2585,7 @@ body .layui-table-tips .layui-layer-content {
 .layui-nav {
     position: relative;
     padding: 0 20px;
-    background-color: #393D49;
+    /*background-color: #393D49;*/
     color: #fff;
     border-radius: 2px;
     font-size: 0;

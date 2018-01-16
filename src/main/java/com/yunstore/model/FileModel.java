@@ -1,16 +1,25 @@
 package com.yunstore.model;
 
+import java.util.List;
+import java.util.Map;
+
 public class FileModel {
 
     private String id;
 
     private String name;
 
-    private String directory;
+    private String size;
 
     private String type;
 
     private String time;
+
+    private String directory;
+
+    private Map<String, String> map;
+
+    private int depth;
 
     public String getId() {
         return id;
@@ -28,12 +37,12 @@ public class FileModel {
         this.name = name;
     }
 
-    public String getDirectory() {
-        return directory;
+    public String getSize() {
+        return size;
     }
 
-    public void setDirectory(String directory) {
-        this.directory = directory;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public String getType() {
@@ -50,5 +59,29 @@ public class FileModel {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(String directory) {
+        this.directory = directory;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 }

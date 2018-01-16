@@ -3,6 +3,10 @@
  @Author: 贤心
  @License：MIT
  */
+/**
+ * 修改了上传文件部分代码，可以进行进度监听
+ * 滕云浩
+ */
  
 layui.define('layer' , function(exports){
   "use strict";

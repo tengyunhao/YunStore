@@ -3,11 +3,12 @@
 <mapper namespace="com.yunstore.mapper.FileInfoMapper" >
   <resultMap id="BaseResultMap" type="com.yunstore.entity.FileInfo" >
     <id column="id" property="id" jdbcType="CHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="directory" property="directory" jdbcType="CHAR" />
+    <result column="time" property="time" jdbcType="CHAR" />
     <result column="type" property="type" jdbcType="CHAR" />
+    <result column="teacher" property="teacher" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,10 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, url, time, directory, type
+    id, url, name, directory, time, type, teacher
   </sql>
-
-  <!-- 查询语句 -->
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yunstore.entity.FileInfoExample" >
     select
     <if test="distinct" >
@@ -93,14 +92,15 @@
     from b_file_info
     where id = #{id,jdbcType=CHAR}
   </select>
-  <select id="countByExample" parameterType="com.yunstore.entity.FileInfoExample" resultType="java.lang.Integer" >
-    select count(*) from b_file_info
+  <!-- 根据用户名查询 -->
+  <select id="selectByName" parameterType="com.yunstore.entity.FileInfoExample" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM b_file_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-
-  <!-- 删除语句 -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from b_file_info
     where id = #{id,jdbcType=CHAR}
@@ -111,14 +111,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-
-  <!-- 插入语句 -->
   <insert id="insert" parameterType="com.yunstore.entity.FileInfo" >
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+      SELECT uuid()
+    </selectKey>
     <!-- 插入的时候主键使用UUID -->
-    insert into b_file_info (id, name, url, time,
-      directory, type)
-    values (uuid(), #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR},
-      #{directory,jdbcType=CHAR}, #{type,jdbcType=CHAR})
+    insert into b_file_info (id, url, name, directory, 
+      time, type, teacher)
+    values (#{id,jdbcType=CHAR}, #{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{directory,jdbcType=CHAR},
+      #{time,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{teacher,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yunstore.entity.FileInfo" >
     insert into b_file_info
@@ -126,65 +127,78 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
-      </if>
       <if test="url != null" >
         url,
       </if>
-      <if test="time != null" >
-        time,
+      <if test="name != null" >
+        name,
       </if>
       <if test="directory != null" >
         directory,
       </if>
+      <if test="time != null" >
+        time,
+      </if>
       <if test="type != null" >
         type,
+      </if>
+      <if test="teacher != null" >
+        teacher,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=CHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        #{time,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="directory != null" >
         #{directory,jdbcType=CHAR},
       </if>
+      <if test="time != null" >
+        #{time,jdbcType=CHAR},
+      </if>
       <if test="type != null" >
         #{type,jdbcType=CHAR},
       </if>
+      <if test="teacher != null" >
+        #{teacher,jdbcType=CHAR},
+      </if>
     </trim>
   </insert>
-
-  <!-- 更新语句 -->
+  <select id="countByExample" parameterType="com.yunstore.entity.FileInfoExample" resultType="java.lang.Integer" >
+    select count(*) from b_file_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update b_file_info
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=CHAR},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
       <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.time != null" >
-        time = #{record.time,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.directory != null" >
         directory = #{record.directory,jdbcType=CHAR},
       </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=CHAR},
+      </if>
       <if test="record.type != null" >
         type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.teacher != null" >
+        teacher = #{record.teacher,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -194,11 +208,12 @@
   <update id="updateByExample" parameterType="map" >
     update b_file_info
     set id = #{record.id,jdbcType=CHAR},
-      name = #{record.name,jdbcType=VARCHAR},
       url = #{record.url,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       directory = #{record.directory,jdbcType=CHAR},
-      type = #{record.type,jdbcType=CHAR}
+      time = #{record.time,jdbcType=CHAR},
+      type = #{record.type,jdbcType=CHAR},
+      teacher = #{record.teacher,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -206,31 +221,35 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.yunstore.entity.FileInfo" >
     update b_file_info
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="directory != null" >
         directory = #{directory,jdbcType=CHAR},
       </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=CHAR},
+      </if>
       <if test="type != null" >
         type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="teacher != null" >
+        teacher = #{teacher,jdbcType=CHAR},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yunstore.entity.FileInfo" >
     update b_file_info
-    set name = #{name,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
-      time = #{time,jdbcType=VARCHAR},
+    set url = #{url,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       directory = #{directory,jdbcType=CHAR},
-      type = #{type,jdbcType=CHAR}
+      time = #{time,jdbcType=CHAR},
+      type = #{type,jdbcType=CHAR},
+      teacher = #{teacher,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

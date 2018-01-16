@@ -20,6 +20,8 @@ public interface FileInfoMapper {
 
     FileInfo selectByPrimaryKey(String id);
 
+    List<FileInfo> selectByName(FileInfoExample example);
+
     int updateByExampleSelective(@Param("record") FileInfo record, @Param("example") FileInfoExample example);
 
     int updateByExample(@Param("record") FileInfo record, @Param("example") FileInfoExample example);

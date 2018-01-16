@@ -8,6 +8,10 @@ public class TreeNode {
 	private String id;
 	
 	private String name;
+
+	private boolean file;
+
+	private String url;
 	
 	private List<TreeNode> children;
 	
@@ -26,7 +30,23 @@ public class TreeNode {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public boolean isFile() {
+		return file;
+	}
+
+	public void setFile(boolean file) {
+		this.file = file;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	/**
 	 * TreeNode 的使用对应用户查看目录结构，它是多实例的，不存在线程安全问题。
 	 */

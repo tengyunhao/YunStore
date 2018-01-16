@@ -17,14 +17,15 @@
             <dd><a href="javascript:;">空间管理</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">资料分享</a>
+        <li class="layui-nav-item" id="nav-share">
+          <a href="javascript:;">我的群组</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">分享组</a></dd>
-            <dd><a href="javascript:;">资料组</a></dd>
-            <dd><a href="javascript:;">任务组</a></dd>
+            <dd id="nav-share-1"><a href="home.do">办公资料</a></dd>
+            <dd id="nav-share-2"><a href="javascript:;">文件共享</a></dd>
+            <dd id="nav-share-3"><a href="javascript:;">任务发布</a></dd>
           </dl>
         </li>
+        <li class="layui-nav-item"><a href="">我的好友</a></li>
         <li class="layui-nav-item"><a href="">我的日程</a></li>
         <li class="layui-nav-item"><a href="">回收站</a></li>
       </ul>

@@ -45,15 +45,15 @@
 	</bean>
 	
 	<!-- 拦截匹配的URL -->
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 				<mvc:mapping path="/**"/>
-				<bean class="com.yuntest.interceptor.AccountInterceptor">
-				</bean>
+				<bean class="com.yunstore.interceptor.AccountInterceptor"></bean>
 		</mvc:interceptor>			
-	</mvc:interceptors> -->
-	<!-- 
-	<mvc:resources location="/WEB-INF/assets/" mapping="/assets/**"/>
-	<mvc:resources location="/WEB-INF/jsp/" mapping="/jsp/**"/> -->
+	</mvc:interceptors>
+
+	<!--<mvc:resources location="/WEB-INF/assets/" mapping="/assets/**"/>-->
+	<!--<mvc:resources location="/WEB-INF/page/" mapping="/page/**"/>-->
+	<!--<mvc:resources location="/WEB-INF/" mapping="/**"/>-->
 	
 </beans>

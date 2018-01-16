@@ -5,8 +5,9 @@
     <id column="id" property="id" jdbcType="CHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="parent" property="parent" jdbcType="CHAR" />
-    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="depth" property="depth" jdbcType="INTEGER" />
     <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="user" property="user" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, parent, path, time
+    id, name, parent, depth, time, user
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yunstore.entity.FileDirectoryExample" >
     select
@@ -101,10 +102,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yunstore.entity.FileDirectory" >
-    insert into b_file_directory (id, name, parent, path, 
-      time)
-    values (uuid(), #{name,jdbcType=VARCHAR}, #{parent,jdbcType=CHAR}, #{path,jdbcType=VARCHAR}, 
-      #{time,jdbcType=VARCHAR})
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+      SELECT uuid()
+    </selectKey>
+    <!-- 插入的时候主键使用UUID -->
+    insert into b_file_directory (id, name, parent, depth, 
+      time, user)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{parent,jdbcType=CHAR}, #{depth,jdbcType=INTEGER}, 
+      #{time,jdbcType=VARCHAR}, #{user,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yunstore.entity.FileDirectory" >
     insert into b_file_directory
@@ -118,11 +123,14 @@
       <if test="parent != null" >
         parent,
       </if>
-      <if test="path != null" >
-        path,
+      <if test="depth != null" >
+        depth,
       </if>
       <if test="time != null" >
         time,
+      </if>
+      <if test="user != null" >
+        user,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -135,11 +143,14 @@
       <if test="parent != null" >
         #{parent,jdbcType=CHAR},
       </if>
-      <if test="path != null" >
-        #{path,jdbcType=VARCHAR},
+      <if test="depth != null" >
+        #{depth,jdbcType=INTEGER},
       </if>
       <if test="time != null" >
         #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -161,11 +172,14 @@
       <if test="record.parent != null" >
         parent = #{record.parent,jdbcType=CHAR},
       </if>
-      <if test="record.path != null" >
-        path = #{record.path,jdbcType=VARCHAR},
+      <if test="record.depth != null" >
+        depth = #{record.depth,jdbcType=INTEGER},
       </if>
       <if test="record.time != null" >
         time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user != null" >
+        user = #{record.user,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -177,8 +191,9 @@
     set id = #{record.id,jdbcType=CHAR},
       name = #{record.name,jdbcType=VARCHAR},
       parent = #{record.parent,jdbcType=CHAR},
-      path = #{record.path,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=VARCHAR}
+      depth = #{record.depth,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=VARCHAR},
+      user = #{record.user,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -192,11 +207,14 @@
       <if test="parent != null" >
         parent = #{parent,jdbcType=CHAR},
       </if>
-      <if test="path != null" >
-        path = #{path,jdbcType=VARCHAR},
+      <if test="depth != null" >
+        depth = #{depth,jdbcType=INTEGER},
       </if>
       <if test="time != null" >
         time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        user = #{user,jdbcType=CHAR},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
@@ -205,8 +223,9 @@
     update b_file_directory
     set name = #{name,jdbcType=VARCHAR},
       parent = #{parent,jdbcType=CHAR},
-      path = #{path,jdbcType=VARCHAR},
-      time = #{time,jdbcType=VARCHAR}
+      depth = #{depth,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR},
+      user = #{user,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>
