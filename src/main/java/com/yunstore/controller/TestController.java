@@ -126,8 +126,8 @@ public class TestController {
 		img = img.replace("data:image/png;base64,","");
 		String face = accountService.getFace(info.getId());
 		// 发送POST请求示例
-		String ali_ak_id = "LTAIdf9zGJ0lTSxB"; //用户ak
-		String ali_ak_secret = "8gWeTRiUpjJOtHC7qIwFV6Pwven2bv"; // 用户ak_secret
+		String ali_ak_id = ""; //用户ak
+		String ali_ak_secret = ""; // 用户ak_secret
 		String ali_url = "https://dtplus-cn-shanghai.data.aliyuncs.com/face/verify";
 
 //        String ali_body = "{\"type\": \"1\", \"content\":\""+img+"\"}";
