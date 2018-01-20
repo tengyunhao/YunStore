@@ -193,13 +193,4 @@ public class AESDecode {
         }
         return result;
     }
-    public static void main(String[] args) throws Exception {
-        // 发送POST请求示例
-        String ak_id = "LTAIdf9zGJ0lTSxB"; //用户ak
-        String ak_secret = "8gWeTRiUpjJOtHC7qIwFV6Pwven2bv"; // 用户ak_secret
-        String url = "https://dtplus-cn-shanghai.data.aliyuncs.com/face/verify";
-        String body = "{\"type\": \"0\", \"image_url_1\":\"http://www.sdjtu.net.cn/ceshi1.png\", \"image_url_2\":\"http://www.sdjtu.net.cn/ceshi2.png\"}";
-        System.out.println("response body:" + sendPost(url, body, ak_id, ak_secret));
-
-    }
 }
